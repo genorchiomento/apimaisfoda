@@ -6,6 +6,7 @@ import io.com.github.gginformatica.apimaisfoda.exception.InternalServerErrorExce
 import io.com.github.gginformatica.apimaisfoda.exception.NotFoundException;
 import io.com.github.gginformatica.apimaisfoda.repository.BebidaRepository;
 import io.com.github.gginformatica.apimaisfoda.repository.orm.BebidaOrm;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,8 +17,9 @@ import java.util.UUID;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
+@Validated
 @RestController
-@RequestMapping()
+@RequestMapping
 public class BebidaApi {
 
     private final BebidaRepository repository;

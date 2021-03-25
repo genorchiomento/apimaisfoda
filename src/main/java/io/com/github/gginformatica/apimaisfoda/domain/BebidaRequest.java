@@ -1,8 +1,13 @@
 package io.com.github.gginformatica.apimaisfoda.domain;
 
+import javax.validation.constraints.NotNull;
+
 public class BebidaRequest {
+    @NotNull(message = "nome is empty")
     private String nome;
+    @NotNull(message = "categoria is empty")
     private Categoria categoria;
+    @NotNull(message = "anoLancamento is empty")
     private Integer anoLancamento;
 
     public String getNome() {
