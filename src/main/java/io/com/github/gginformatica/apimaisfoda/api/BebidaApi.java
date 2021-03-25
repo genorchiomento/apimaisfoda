@@ -48,6 +48,9 @@ public class BebidaApi {
             });
 
             return response;
+
+        } catch (NotFoundException notFoundException) {
+            throw notFoundException;
         } catch (Exception exception) {
             throw new InternalServerErrorException(exception);
         }
@@ -69,6 +72,9 @@ public class BebidaApi {
             bebidaResponse.setAnoLancamento(bebidaOrm.getAnoLancamento());
 
             return bebidaResponse;
+
+        } catch (NotFoundException notFoundException) {
+            throw notFoundException;
         } catch (Exception exception) {
             throw new InternalServerErrorException(exception);
         }
@@ -85,6 +91,7 @@ public class BebidaApi {
             orm.setAnoLancamento(request.getAnoLancamento());
 
             repository.save(orm);
+
         } catch (Exception exception) {
             throw new InternalServerErrorException(exception);
         }
@@ -111,6 +118,9 @@ public class BebidaApi {
             orm.setAnoLancamento(request.getAnoLancamento());
 
             repository.save(orm);
+
+        } catch (NotFoundException notFoundException) {
+            throw notFoundException;
         } catch (Exception exception) {
             throw new InternalServerErrorException(exception);
         }
@@ -129,6 +139,9 @@ public class BebidaApi {
             }
 
             repository.delete(bebidaOrm);
+
+        } catch (NotFoundException notFoundException) {
+            throw notFoundException;
         } catch (Exception exception) {
             throw new InternalServerErrorException(exception);
         }

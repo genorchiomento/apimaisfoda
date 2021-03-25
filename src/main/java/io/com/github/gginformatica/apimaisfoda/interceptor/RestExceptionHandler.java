@@ -1,11 +1,13 @@
 package io.com.github.gginformatica.apimaisfoda.interceptor;
 
 import io.com.github.gginformatica.apimaisfoda.domain.ErrorResponse;
-import io.com.github.gginformatica.apimaisfoda.exception.BadRequestException;
 import io.com.github.gginformatica.apimaisfoda.exception.InternalServerErrorException;
 import io.com.github.gginformatica.apimaisfoda.exception.NotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -59,7 +61,7 @@ public class RestExceptionHandler {
                 httpServletRequest.getServletPath(),
                 BAD_REQUEST.value(),
                 BAD_REQUEST.getReasonPhrase(),
-                "Payload with error"
+                "Payload com erro"
         );
     }
 }

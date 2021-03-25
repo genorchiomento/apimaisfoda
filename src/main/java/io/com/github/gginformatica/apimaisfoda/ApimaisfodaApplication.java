@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ApimaisfodaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ApimaisfodaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ApimaisfodaApplication.class, args);
+    }
 
 }

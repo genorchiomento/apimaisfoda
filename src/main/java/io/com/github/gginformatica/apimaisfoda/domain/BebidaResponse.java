@@ -1,7 +1,5 @@
 package io.com.github.gginformatica.apimaisfoda.domain;
 
-import java.time.LocalDate;
-
 public class BebidaResponse {
     private String nome;
     private Categoria categoria;

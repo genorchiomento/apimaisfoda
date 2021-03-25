@@ -1,6 +1,5 @@
 package io.com.github.gginformatica.apimaisfoda.domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ErrorResponse {
