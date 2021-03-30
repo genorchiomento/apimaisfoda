@@ -1,10 +1,10 @@
 package io.com.github.gginformatica.apimaisfoda.domain;
 
-public class DrinksResponse {
+public class AtributoDrinkResponse {
     private final String nome;
     private final String thumbnail;
 
-    public DrinksResponse(String nome, String thumbnail) {
+    public AtributoDrinkResponse(String nome, String thumbnail) {
         this.nome = nome;
         this.thumbnail = thumbnail;
     }
