@@ -2,17 +2,12 @@ package io.com.github.gginformatica.apimaisfoda.api;
 
 import io.com.github.gginformatica.apimaisfoda.domain.BebidaRequest;
 import io.com.github.gginformatica.apimaisfoda.domain.BebidaResponse;
-import io.com.github.gginformatica.apimaisfoda.exception.InternalServerErrorException;
-import io.com.github.gginformatica.apimaisfoda.exception.NotFoundException;
-import io.com.github.gginformatica.apimaisfoda.repository.BebidaRepository;
-import io.com.github.gginformatica.apimaisfoda.repository.orm.BebidaOrm;
+import io.com.github.gginformatica.apimaisfoda.service.BebidaService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
@@ -22,80 +17,28 @@ import static org.springframework.http.HttpStatus.OK;
 @RequestMapping
 public class BebidaApi {
 
-    private final BebidaRepository repository;
+    private final BebidaService bebidaService;
 
-    public BebidaApi(final BebidaRepository repository) {
-        this.repository = repository;
+    public BebidaApi(final BebidaService bebidaService) {
+        this.bebidaService = bebidaService;
     }
 
     @GetMapping("/listarBebidas")
     @ResponseStatus(OK)
     public List<BebidaResponse> getTodasBebidas() {
-        try {
-            List<BebidaOrm> list = repository.findAll();
-            if (list.isEmpty()) {
-                throw new NotFoundException("Não há bebidas");
-            }
-
-            List<BebidaResponse> response = new ArrayList<>();
-            list.forEach(bebidaOrm -> {
-                BebidaResponse bebidaResponse = new BebidaResponse();
-                bebidaResponse.setNome(bebidaOrm.getNome());
-                bebidaResponse.setCategoria(bebidaOrm.getCategoria());
-                bebidaResponse.setAnoLancamento(bebidaOrm.getAnoLancamento());
-
-                response.add(bebidaResponse);
-            });
-
-            return response;
-
-        } catch (NotFoundException notFoundException) {
-            throw notFoundException;
-        } catch (Exception exception) {
-            throw new InternalServerErrorException(exception);
-        }
+        return bebidaService.getTodasBebidas();
     }
 
     @GetMapping("/buscarBebida/{bebida}")
     @ResponseStatus(OK)
     public BebidaResponse getBebida(@PathVariable("bebida") String nome) {
-        try {
-            BebidaOrm bebidaOrm = repository.findByNome(nome.toUpperCase());
-
-            if (bebidaOrm == null) {
-                throw new NotFoundException("Bebida não existe");
-            }
-
-            BebidaResponse bebidaResponse = new BebidaResponse();
-            bebidaResponse.setNome(bebidaOrm.getNome());
-            bebidaResponse.setCategoria(bebidaOrm.getCategoria());
-            bebidaResponse.setAnoLancamento(bebidaOrm.getAnoLancamento());
-
-            return bebidaResponse;
-
-        } catch (NotFoundException notFoundException) {
-            throw notFoundException;
-        } catch (Exception exception) {
-            throw new InternalServerErrorException(exception);
-        }
+        return bebidaService.getBebida(nome);
     }
 
     @PostMapping("/salvarBebida")
     @ResponseStatus(CREATED)
     public void salvarBebida(@Valid @RequestBody BebidaRequest request) {
-        try {
-            BebidaOrm orm = new BebidaOrm();
-            orm.setId(UUID.randomUUID().toString());
-            orm.setNome(request.getNome().toUpperCase());
-            orm.setCategoria(request.getCategoria());
-            orm.setAnoLancamento(request.getAnoLancamento());
-
-            repository.save(orm);
-
-        } catch (Exception exception) {
-            throw new InternalServerErrorException(exception);
-        }
-
+        bebidaService.salvarBebida(request);
     }
 
     @PutMapping("/atualizarBebida/{bebida}")
@@ -104,26 +47,7 @@ public class BebidaApi {
             @PathVariable("bebida") String nome,
             @RequestBody BebidaRequest request
     ) {
-        try {
-            BebidaOrm bebidaOrm = repository.findByNome(nome);
-
-            if (bebidaOrm == null) {
-                throw new NotFoundException("Bebida não encontrada");
-            }
-
-            BebidaOrm orm = new BebidaOrm();
-            orm.setId(bebidaOrm.getId());
-            orm.setNome(request.getNome().toUpperCase());
-            orm.setCategoria(request.getCategoria());
-            orm.setAnoLancamento(request.getAnoLancamento());
-
-            repository.save(orm);
-
-        } catch (NotFoundException notFoundException) {
-            throw notFoundException;
-        } catch (Exception exception) {
-            throw new InternalServerErrorException(exception);
-        }
+        bebidaService.atualizarBebida(nome, request);
     }
 
     @DeleteMapping("/deletarBebida/{bebida}")
@@ -131,19 +55,6 @@ public class BebidaApi {
     public void deletarBebida(
             @PathVariable("bebida") String nome
     ) {
-        try {
-            BebidaOrm bebidaOrm = repository.findByNome(nome);
-
-            if (bebidaOrm == null) {
-                throw new NotFoundException("Bebida não encontrada");
-            }
-
-            repository.delete(bebidaOrm);
-
-        } catch (NotFoundException notFoundException) {
-            throw notFoundException;
-        } catch (Exception exception) {
-            throw new InternalServerErrorException(exception);
-        }
+        bebidaService.deletarBebida(nome);
     }
 }
