@@ -1,7 +1,7 @@
 package io.com.github.gginformatica.apimaisfoda.service;
 
-import io.com.github.gginformatica.apimaisfoda.domain.BebidaRequest;
-import io.com.github.gginformatica.apimaisfoda.domain.BebidaResponse;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.BebidaRequest;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.BebidaResponse;
 import io.com.github.gginformatica.apimaisfoda.exception.InternalServerErrorException;
 import io.com.github.gginformatica.apimaisfoda.exception.NotFoundException;
 import io.com.github.gginformatica.apimaisfoda.repository.BebidaRepository;

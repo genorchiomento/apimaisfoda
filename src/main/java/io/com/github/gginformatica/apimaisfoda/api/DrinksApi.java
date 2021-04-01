@@ -1,6 +1,6 @@
 package io.com.github.gginformatica.apimaisfoda.api;
 
-import io.com.github.gginformatica.apimaisfoda.domain.DrinkResponse;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.DrinkResponse;
 import io.com.github.gginformatica.apimaisfoda.service.DrinksService;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,9 @@
 package io.com.github.gginformatica.apimaisfoda.interceptor;
 
-import io.com.github.gginformatica.apimaisfoda.domain.ErrorResponse;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.ErrorResponse;
 import io.com.github.gginformatica.apimaisfoda.exception.InternalServerErrorException;
 import io.com.github.gginformatica.apimaisfoda.exception.NotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,11 +25,9 @@ public class RestExceptionHandler {
             NotFoundException notFoundException,
             HttpServletRequest httpServletRequest
     ) {
-        return new ErrorResponse(
-                LocalDateTime.now(),
-                httpServletRequest.getServletPath(),
-                NOT_FOUND.value(),
-                NOT_FOUND.getReasonPhrase(),
+        return getErrorResponse(
+                httpServletRequest,
+                NOT_FOUND,
                 notFoundException.getMessage()
         );
     }
@@ -40,11 +39,9 @@ public class RestExceptionHandler {
             InternalServerErrorException internalServerErrorException,
             HttpServletRequest httpServletRequest
     ) {
-        return new ErrorResponse(
-                LocalDateTime.now(),
-                httpServletRequest.getServletPath(),
-                INTERNAL_SERVER_ERROR.value(),
-                INTERNAL_SERVER_ERROR.getReasonPhrase(),
+        return getErrorResponse(
+                httpServletRequest,
+                INTERNAL_SERVER_ERROR,
                 internalServerErrorException.getMessage()
         );
     }
@@ -56,12 +53,23 @@ public class RestExceptionHandler {
             MethodArgumentNotValidException badRequestException,
             HttpServletRequest httpServletRequest
     ) {
+        return getErrorResponse(
+                httpServletRequest,
+                BAD_REQUEST,
+                "Payload com erro"
+        );
+    }
+
+    private ErrorResponse getErrorResponse(
+            HttpServletRequest httpServletRequest,
+            HttpStatus httpStatus,
+            String msgError) {
         return new ErrorResponse(
                 LocalDateTime.now(),
                 httpServletRequest.getServletPath(),
-                BAD_REQUEST.value(),
-                BAD_REQUEST.getReasonPhrase(),
-                "Payload com erro"
+                httpStatus.value(),
+                httpStatus.getReasonPhrase(),
+                msgError
         );
     }
 }

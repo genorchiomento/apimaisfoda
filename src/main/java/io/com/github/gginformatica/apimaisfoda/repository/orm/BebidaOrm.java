@@ -1,6 +1,6 @@
 package io.com.github.gginformatica.apimaisfoda.repository.orm;
 
-import io.com.github.gginformatica.apimaisfoda.domain.Categoria;
+import io.com.github.gginformatica.apimaisfoda.domain.enumerable.Categoria;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

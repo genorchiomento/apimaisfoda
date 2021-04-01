@@ -1,4 +1,4 @@
-package io.com.github.gginformatica.apimaisfoda.integration;
+package io.com.github.gginformatica.apimaisfoda.integration.response;
 
 import java.util.List;
 

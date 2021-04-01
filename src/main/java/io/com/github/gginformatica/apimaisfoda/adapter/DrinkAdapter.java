@@ -1,8 +1,8 @@
 package io.com.github.gginformatica.apimaisfoda.adapter;
 
-import io.com.github.gginformatica.apimaisfoda.domain.AtributoDrinkResponse;
-import io.com.github.gginformatica.apimaisfoda.domain.DrinkResponse;
-import io.com.github.gginformatica.apimaisfoda.integration.DrinkWithTheCocktailDbResponse;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.AtributoDrinkResponse;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.DrinkResponse;
+import io.com.github.gginformatica.apimaisfoda.integration.response.DrinkWithTheCocktailDbResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

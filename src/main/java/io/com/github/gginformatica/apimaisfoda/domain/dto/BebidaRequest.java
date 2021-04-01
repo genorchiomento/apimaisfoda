@@ -1,18 +1,16 @@
-package io.com.github.gginformatica.apimaisfoda.domain;
+package io.com.github.gginformatica.apimaisfoda.domain.dto;
 
-public class BebidaResponse {
+import io.com.github.gginformatica.apimaisfoda.domain.enumerable.Categoria;
+
+import javax.validation.constraints.NotNull;
+
+public class BebidaRequest {
+    @NotNull(message = "nome está vazio")
     private String nome;
+    @NotNull(message = "categoria está vazio")
     private Categoria categoria;
+    @NotNull(message = "anoLancamento está vazio")
     private Integer anoLancamento;
-
-    public BebidaResponse() {
-    }
-
-    public BebidaResponse(String nomeBebida, Categoria categoria, Integer lancamento) {
-        this.nome = nomeBebida;
-        this.categoria = categoria;
-        this.anoLancamento = lancamento;
-    }
 
     public String getNome() {
         return nome;

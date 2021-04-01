@@ -1,9 +1,9 @@
 package io.com.github.gginformatica.apimaisfoda.service;
 
 import io.com.github.gginformatica.apimaisfoda.adapter.DrinkAdapter;
-import io.com.github.gginformatica.apimaisfoda.domain.DrinkResponse;
-import io.com.github.gginformatica.apimaisfoda.integration.DrinkWithTheCocktailDbResponse;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.DrinkResponse;
 import io.com.github.gginformatica.apimaisfoda.integration.TheCocktailDbIntegration;
+import io.com.github.gginformatica.apimaisfoda.integration.response.DrinkWithTheCocktailDbResponse;
 import org.springframework.stereotype.Service;
 
 @Service

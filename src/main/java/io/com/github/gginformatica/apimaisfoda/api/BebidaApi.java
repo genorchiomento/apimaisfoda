@@ -1,7 +1,7 @@
 package io.com.github.gginformatica.apimaisfoda.api;
 
-import io.com.github.gginformatica.apimaisfoda.domain.BebidaRequest;
-import io.com.github.gginformatica.apimaisfoda.domain.BebidaResponse;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.BebidaRequest;
+import io.com.github.gginformatica.apimaisfoda.domain.dto.BebidaResponse;
 import io.com.github.gginformatica.apimaisfoda.service.BebidaService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

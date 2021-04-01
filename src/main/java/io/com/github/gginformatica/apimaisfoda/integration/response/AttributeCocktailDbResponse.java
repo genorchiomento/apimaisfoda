@@ -1,4 +1,4 @@
-package io.com.github.gginformatica.apimaisfoda.integration;
+package io.com.github.gginformatica.apimaisfoda.integration.response;
 
 public class AttributeCocktailDbResponse {
     private final String strDrink;

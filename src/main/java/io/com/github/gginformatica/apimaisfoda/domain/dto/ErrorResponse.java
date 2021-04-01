@@ -1,4 +1,4 @@
-package io.com.github.gginformatica.apimaisfoda.domain;
+package io.com.github.gginformatica.apimaisfoda.domain.dto;
 
 import java.time.LocalDateTime;
 
