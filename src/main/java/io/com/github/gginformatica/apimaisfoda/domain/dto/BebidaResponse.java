@@ -39,4 +39,13 @@ public class BebidaResponse {
     public void setAnoLancamento(Integer anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
+
+    @Override
+    public String toString() {
+        return "BebidaResponse{" +
+                "nome='" + nome + '\'' +
+                ", categoria=" + categoria +
+                ", anoLancamento=" + anoLancamento +
+                '}';
+    }
 }

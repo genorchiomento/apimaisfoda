@@ -1,13 +1,19 @@
 package io.com.github.gginformatica.apimaisfoda;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
-@SpringBootTest
-class ApimaisfodaApplicationTests {
+@RunWith(MockitoJUnitRunner.class)
+public abstract class ApimaisfodaApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Before
+    public abstract void init();
+
+    @Before
+    public void setUp() {
+        FixtureFactoryLoader.loadTemplates("io.com.github.gginformatica.apimaisfoda");
+    }
 
 }

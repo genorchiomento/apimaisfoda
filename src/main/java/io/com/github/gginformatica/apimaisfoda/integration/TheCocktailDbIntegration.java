@@ -11,4 +11,3 @@ public interface TheCocktailDbIntegration {
     @GetMapping("/filter.php?i={bebida}")
     DrinkWithTheCocktailDbResponse getCocktails(@PathVariable String bebida);
 }
-

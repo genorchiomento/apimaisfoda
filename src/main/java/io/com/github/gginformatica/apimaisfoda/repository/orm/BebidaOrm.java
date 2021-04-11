@@ -12,6 +12,16 @@ public class BebidaOrm {
     private Categoria categoria;
     private Integer anoLancamento;
 
+    public BebidaOrm() {
+    }
+
+    public BebidaOrm(String id, String nome, Categoria categoria, Integer anoLancamento) {
+        this.id = id;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.anoLancamento = anoLancamento;
+    }
+
     public String getId() {
         return id;
     }
